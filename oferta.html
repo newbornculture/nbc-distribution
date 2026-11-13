@@ -70,6 +70,51 @@
       flex: 1;
     }
 
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px 12px;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      background-color: var(--lavender);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px;
+      flex-shrink: 0;
+    }
+
+    .logo-badge svg {
+      width: 100%;
+      height: 100%;
+      fill: #0A0A0A;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: lowercase;
+      color: var(--text-main);
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -77,12 +122,12 @@
       font-size: 14px;
       color: var(--lavender);
       text-decoration: none;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border: 1px solid var(--border-subtle);
       border-radius: 999px;
       background: rgba(210, 174, 227, 0.08);
-      margin-bottom: 32px;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
     .back-link:hover {
@@ -105,6 +150,18 @@
         padding: 24px 20px;
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
+      }
+      .brand-header {
+        margin-bottom: 32px;
+      }
+      .logo-badge {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+        border-radius: 11px;
+      }
+      .brand-name {
+        font-size: 18px;
       }
     }
 
@@ -202,7 +259,33 @@
 <body>
 
   <div class="container">
-    <a href="index.html" class="back-link">← Назад к тарифам</a>
+    <header class="brand-header">
+      <a href="index.html" class="brand-lockup">
+        <div class="logo-badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="14" y="72" width="11" height="56" rx="5.5"/>
+            <rect x="33" y="45" width="13" height="110" rx="6.5"/>
+            <rect x="54" y="27" width="15" height="146" rx="7.5"/>
+            <rect x="77" y="17" width="17" height="166" rx="8.5"/>
+            <rect x="102" y="12" width="17" height="176" rx="8.5"/>
+            <rect x="127" y="19" width="16" height="162" rx="8"/>
+            <rect x="151" y="31" width="14" height="138" rx="7"/>
+            <rect x="173" y="50" width="12" height="100" rx="6"/>
+            <rect x="191" y="75" width="9" height="50" rx="4.5"/>
+            <rect x="20" y="96" width="18" height="8" rx="4"/>
+            <rect x="42" y="114" width="18" height="8" rx="4"/>
+            <rect x="64" y="86" width="18" height="8" rx="4"/>
+            <rect x="88" y="118" width="18" height="8" rx="4"/>
+            <rect x="114" y="92" width="18" height="8" rx="4"/>
+            <rect x="138" y="74" width="18" height="8" rx="4"/>
+            <rect x="160" y="102" width="18" height="8" rx="4"/>
+            <rect x="180" y="110" width="16" height="8" rx="4"/>
+          </svg>
+        </div>
+        <div class="brand-name">nbc distribution</div>
+      </a>
+      <a href="index.html" class="back-link">← Назад к тарифам</a>
+    </header>
 
     <div class="offer-card">
       <h1>ПУБЛИЧНАЯ ОФЕРТА О ЗАКЛЮЧЕНИИ ЛИЦЕНЗИОННОГО ДОГОВОРА</h1>

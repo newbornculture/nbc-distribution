@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nbc distribution — Тарифы</title>
   <meta name="description" content="Тарифы и оплата услуг дистрибуции музыки nbc distribution">
-  <meta name="theme-color" content="#270A35">
+  <meta name="theme-color" content="#250931">
   <link rel="preload" href="assets/fonts/heading-now-84-regular.otf" as="font" type="font/otf" crossorigin>
   <style>
     @font-face {
@@ -17,7 +17,8 @@
     }
 
     :root {
-      --bg-dark: #270A35;
+      /* Точный цвет верхнего края фоновой картинки для бесшовного слияния */
+      --bg-dark: #250931;
       --card-bg: rgba(50, 18, 66, 0.55);
       --card-bg-featured: rgba(61, 23, 82, 0.65);
       --lavender: #D2AEE3;
@@ -42,7 +43,8 @@
     body {
       isolation: isolate;
       font-synthesis: none;
-      background-color: var(--bg-dark);
+      /* Нижний цвет страницы подобран под нижнюю часть картинки */
+      background-color: #3b144d;
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.55;
@@ -52,16 +54,17 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Надежный фиксированный фон с вылетом за границы для защиты от скачков мобильной адресной строки */
+    /* Намертво фиксированный фон с вылетом за границы, чтобы перекрыть адресную строку без сдвигов */
     body::before {
       content: "";
       position: fixed;
-      top: -40px;
-      left: 0;
-      right: 0;
-      bottom: -40px;
+      top: -30px;
+      left: -20px;
+      right: -20px;
+      bottom: -30px;
       z-index: -1;
       background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
+      pointer-events: none;
     }
 
     .container {

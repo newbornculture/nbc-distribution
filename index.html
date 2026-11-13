@@ -170,14 +170,13 @@
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       position: relative;
     }
 
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.42);
-      padding-top: 56px; /* Единый верхний отступ с запасом под двухстрочный бейдж */
+      padding-top: 56px; /* Фиксированный отступ для бесшовного размещения двухстрочного бейджа */
     }
 
     .badge {
@@ -204,6 +203,11 @@
       display: flex;
       flex-direction: column;
       flex: 1;
+      justify-content: space-between;
+    }
+
+    .tariff-top {
+      /* Фиксируем блок названия и цены сверху, гарантируя абсолютное выравнивание */
     }
 
     .tariff-name {
@@ -420,11 +424,11 @@
         flex: 0 0 var(--card-w);
         scroll-snap-align: center;
         flex-shrink: 0;
-        padding-top: 48px; /* Выравниваем стандартный отступ для всех карточек на мобилках */
+        padding-top: 32px;
       }
 
       .card.featured {
-        padding-top: 56px; /* Фикс для точного совпадения верстки карточки Full */
+        padding-top: 56px;
       }
 
       .badge {
@@ -509,9 +513,9 @@
 
       <div class="pricing-grid" id="pricingGrid">
         <article class="card featured" id="tariff-full">
+          <span class="badge">Самый выгодный<br>по наполнению</span>
           <div class="card-body">
-            <div>
-              <span class="badge">Самый выгодный<br>по наполнению</span>
+            <div class="tariff-top">
               <h2 class="tariff-name">Full</h2>
               <div class="tariff-price">4 200 ₽</div>
               <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
@@ -531,7 +535,7 @@
 
         <article class="card" id="tariff-middle">
           <div class="card-body">
-            <div>
+            <div class="tariff-top">
               <h2 class="tariff-name">Middle</h2>
               <div class="tariff-price">3 700 ₽</div>
               <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
@@ -549,7 +553,7 @@
 
         <article class="card" id="tariff-basic">
           <div class="card-body">
-            <div>
+            <div class="tariff-top">
               <h2 class="tariff-name">Basic</h2>
               <div class="tariff-price">2 700 ₽</div>
               <div class="tariff-delivery">Срок доставки: от 2 рабочих дней</div>

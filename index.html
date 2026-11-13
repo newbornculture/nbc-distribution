@@ -39,11 +39,10 @@
 
     html { overflow-x: hidden; }
 
-    /* Жестко фиксированный статичный фон на уровне body, который не двигается при скролле */
     body {
       isolation: isolate;
       font-synthesis: none;
-      background: url('assets/images/bg.webp') center top fixed / cover no-repeat var(--bg-dark);
+      background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.55;
@@ -52,6 +51,22 @@
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* Намертво зафиксированный фон, который стоит на месте и не двигается при скролле */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
+      pointer-events: none;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
 
     .container {
@@ -387,9 +402,8 @@
     }
 
     @media (max-width: 920px) {
-      /* Мобильный фон намертво фиксируется без сдвигов */
-      body {
-        background: url('assets/images/bg-mob.webp') center top fixed / cover no-repeat var(--bg-dark);
+      body::before {
+        background: url('assets/images/bg-mob.webp') center top / cover no-repeat var(--bg-dark);
       }
 
       .pricing-grid {

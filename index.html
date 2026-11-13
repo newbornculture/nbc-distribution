@@ -51,19 +51,24 @@
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* Намертво зафиксированный фон, который НЕ двигается при пролистывании */
+    /* Намертво зафиксированный фон с запасом по высоте против рывков адресной строки */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      right: 0;
+      bottom: -100px;
+      height: calc(100% + 100px);
       z-index: -1;
       background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
       pointer-events: none;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
     }
 
     .container {

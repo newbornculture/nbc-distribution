@@ -176,7 +176,7 @@
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.42);
-      padding-top: 56px; /* Фиксированный отступ для бесшовного размещения двухстрочного бейджа */
+      padding-top: 56px;
     }
 
     .badge {
@@ -207,7 +207,8 @@
     }
 
     .tariff-top {
-      /* Фиксируем блок названия и цены сверху, гарантируя абсолютное выравнивание */
+      display: flex;
+      flex-direction: column;
     }
 
     .tariff-name {
@@ -216,6 +217,9 @@
       font-weight: 400;
       color: var(--text-main);
       margin-bottom: 6px;
+      height: 34px; /* Жестко фиксируем высоту строки названия для абсолютного равенства */
+      display: flex;
+      align-items: center;
     }
 
     .tariff-price {
@@ -224,6 +228,9 @@
       font-weight: 400;
       color: var(--lavender);
       margin-bottom: 12px;
+      height: 44px; /* Жестко фиксируем высоту блока цены */
+      display: flex;
+      align-items: center;
     }
 
     .tariff-delivery {
@@ -232,6 +239,7 @@
       padding-bottom: 18px;
       margin-bottom: 20px;
       border-bottom: 1px solid var(--border-subtle);
+      min-height: 52px; /* Фикс для срока доставки */
     }
 
     .features-label {
@@ -425,6 +433,8 @@
         scroll-snap-align: center;
         flex-shrink: 0;
         padding-top: 32px;
+        -webkit-backdrop-filter: blur(12px); /* Возвращаем нормальный эффект размытия фона карточкам на мобилках */
+        backdrop-filter: blur(12px);
       }
 
       .card.featured {
@@ -454,9 +464,9 @@
       .header-actions { gap: 8px; }
       .tg-link, .offer-link { font-size: 13px; padding: 8px 12px; }
 
-      .card, .dropdown-section {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+      .dropdown-section {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
       }
 
       .terms-grid {

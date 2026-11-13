@@ -55,11 +55,10 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
-      height: 100lvh;
+      height: 100%;
       transform: translateZ(0);
       z-index: -1;
-      background: url('assets/images/bg.webp') center / cover no-repeat var(--bg-dark);
+      background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
     }
 
     .container {
@@ -84,12 +83,12 @@
     .brand-lockup {
       display: flex;
       align-items: center;
-      gap: 18px; /* Точно такой же отступ, как на главной */
+      gap: 18px;
       text-decoration: none;
     }
 
     .logo-badge {
-      width: 52px; /* Синхронизируем размер с главной страницей */
+      width: 52px;
       height: 52px;
       background-color: var(--lavender);
       border-radius: 14px;
@@ -108,7 +107,7 @@
 
     .brand-name {
       font-family: var(--font-display);
-      font-size: 24px; /* Синхронизируем размер шрифта с главной */
+      font-size: 24px;
       font-weight: 400;
       letter-spacing: 0.03em;
       text-transform: lowercase;
@@ -147,7 +146,7 @@
 
     @media (max-width: 920px) {
       body::before {
-        background-image: url('assets/images/bg-mob.webp'); /* Подключаем точно такой же мобильный фон, как на главной */
+        background: url('assets/images/bg-mob.webp') center top / cover no-repeat var(--bg-dark);
       }
       .offer-card {
         padding: 24px 20px;
@@ -158,7 +157,7 @@
         margin-bottom: 36px;
       }
       .brand-lockup {
-        gap: 12px; /* Мобильный отступ как на главной */
+        gap: 12px;
       }
       .logo-badge {
         width: 40px;

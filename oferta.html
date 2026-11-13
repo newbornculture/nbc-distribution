@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nbc distribution — Публичная оферта</title>
-  <meta name="description" content="Публичная оферта о заключении договора возмездного оказания услуг по цифровой дистрибуции и продвижению музыкального контента">
+  <meta name="description" content="Публичная оферта о заключении лицензионного договора о цифровой дистрибуции и продвижении музыкального контента">
   <meta name="theme-color" content="#270A35">
   <link rel="preload" href="assets/fonts/heading-now-84-regular.otf" as="font" type="font/otf" crossorigin>
   <style>
@@ -178,6 +178,25 @@
       color: var(--text-main);
       font-size: 15px;
     }
+
+    .req-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 6px 16px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .req-grid {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .req-label {
+        font-weight: 600;
+        color: var(--text-main);
+        margin-top: 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -186,8 +205,8 @@
     <a href="index.html" class="back-link">← Назад к тарифам</a>
 
     <div class="offer-card">
-      <h1>ПУБЛИЧНАЯ ОФЕРТА</h1>
-      <div class="subtitle">о заключении договора возмездного оказания услуг по цифровой дистрибуции и продвижению музыкального контента с элементами лицензионного договора<br><strong>г. Москва | Редакция от «13» ноября 2026 г.</strong></div>
+      <h1>ПУБЛИЧНАЯ ОФЕРТА О ЗАКЛЮЧЕНИИ ЛИЦЕНЗИОННОГО ДОГОВОРА</h1>
+      <div class="subtitle">о предоставлении права использования музыкального контента и оказании услуг по цифровой дистрибуции и продвижению с элементами возмездного оказания услуг<br><strong>г. Москва | Редакция от «13» ноября 2026 г.</strong></div>
       
       <p>Индивидуальный предприниматель Кузнецов Роман Михайлович (ОГРНИП: 326723200122391, ИНН: 720319239388), именуемый в дальнейшем «Исполнитель» (Лицензиат), публикует настоящую Публичную оферту в адрес индивидуальных предпринимателей (ИП), юридических лиц (ООО) и физических лиц, применяющих специальный налоговый режим «Налог на профессиональный доход» (самозанятых), именуемых в дальнейшем «Заказчик» (Лицензиар).</p>
 
@@ -250,11 +269,20 @@
 
       <div class="requisites-box">
         <strong>Реквизиты Исполнителя:</strong>
-        Индивидуальный предприниматель Кузнецов Роман Михайлович<br>
-        ОГРНИП: 326723200122391 | ИНН: 720319239388<br>
-        E-mail: new.bornculture.demo@gmail.com<br>
-        Телефон: <a href="tel:+79939111872" style="color: var(--lavender); text-decoration: none;">+7 (993) 911-18-72</a><br>
-        Telegram: <a href="https://t.me/newborn_culture" target="_blank" style="color: var(--lavender); text-decoration: none;">@newborn_culture</a>
+        <div class="req-grid">
+          <div class="req-label">Имя / Статус:</div>
+          <div>ИП Кузнецов Роман Михайлович</div>
+          <div class="req-label">ОГРНИП:</div>
+          <div>326723200122391</div>
+          <div class="req-label">ИНН:</div>
+          <div>720319239388</div>
+          <div class="req-label">E-mail:</div>
+          <div>new.bornculture.demo@gmail.com</div>
+          <div class="req-label">Телефон:</div>
+          <div><a href="tel:+79939111872" style="color: var(--lavender); text-decoration: none;">+7 (993) 911-18-72</a></div>
+          <div class="req-label">Telegram:</div>
+          <div><a href="https://t.me/newborn_culture" target="_blank" style="color: var(--lavender); text-decoration: none;">@newborn_culture</a></div>
+        </div>
       </div>
     </div>
   </div>

@@ -177,13 +177,17 @@
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.42);
-      padding-top: 48px; 
+      padding-top: 48px; /* Даем отступ сверху, чтобы контент не наезжал на плашку */
     }
 
     .badge {
       position: absolute;
       top: -13px;
       left: 28px;
+      right: 28px; /* Ограничиваем ширину плашки в границах блока, предотвращая вылет */
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
       font-family: var(--font-display);
@@ -413,17 +417,21 @@
       }
 
       .card.featured {
-        padding-top: 32px; /
+        padding-top: 48px; /* Сохраняем одинаковый отступ, чтобы название и цена были на одном уровне с остальными */
       }
 
       .badge {
-        position: static;
-        display: inline-block;
-        max-width: 100%;
-        margin-bottom: 16px;
-        white-space: normal;
-        overflow-wrap: anywhere;
+        position: absolute;
+        top: -13px;
+        left: 20px;
+        right: 20px;
         text-align: center;
+        display: block;
+        max-width: none;
+        margin-bottom: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .slider-dots {

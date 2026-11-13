@@ -177,28 +177,33 @@
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.42);
-      padding-top: 48px; /* Даем отступ сверху, чтобы контент не наезжал на плашку */
+      padding-top: 54px; /* Увеличиваем отступ сверху для двухстрочного бейджа */
     }
 
     .badge {
       position: absolute;
-      top: -13px;
+      top: -16px;
       left: 28px;
-      right: 28px; /* Ограничиваем ширину плашки в границах блока, предотвращая вылет */
+      right: 28px;
       text-align: center;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      white-space: normal; /* Разрешаем перенос на две строки */
+      line-height: 1.3;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
       font-family: var(--font-display);
       font-size: 11px;
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      padding: 5px 11px;
-      border-radius: 999px;
+      padding: 6px 14px;
+      border-radius: 14px;
       background: var(--lavender);
       color: var(--bg-dark);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1; /* Растягивает контент, прижимая кнопку к низу */
     }
 
     .tariff-name {
@@ -234,7 +239,7 @@
 
     .features-list {
       list-style: none;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .features-list li {
@@ -269,6 +274,7 @@
       background-color: var(--lavender);
       color: var(--bg-dark);
       transition: background-color 0.2s ease, color 0.2s ease;
+      margin-top: auto; /* Жестко фиксирует кнопку внизу карточки */
     }
 
     .pay-btn:hover {
@@ -417,21 +423,19 @@
       }
 
       .card.featured {
-        padding-top: 48px; /* Сохраняем одинаковый отступ, чтобы название и цена были на одном уровне с остальными */
+        padding-top: 54px;
       }
 
       .badge {
         position: absolute;
-        top: -13px;
+        top: -16px;
         left: 20px;
         right: 20px;
         text-align: center;
         display: block;
         max-width: none;
         margin-bottom: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        white-space: normal;
       }
 
       .slider-dots {
@@ -504,51 +508,57 @@
 
       <div class="pricing-grid" id="pricingGrid">
         <article class="card featured" id="tariff-full">
-          <div>
-            <span class="badge">Самый выгодный по наполнению</span>
-            <h2 class="tariff-name">Full</h2>
-            <div class="tariff-price">4 200 ₽</div>
-            <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
-            <div class="features-label">В данный тариф входит:</div>
-            <ul class="features-list">
-              <li>доставка песни на стриминговые сервисы;</li>
-              <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
-              <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
-              <li>оформление карточек артиста в сервисах Звук, Яндекс Музыка, VK Музыка;</li>
-              <li>синхронизированный текст на площадках;</li>
-              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
-            </ul>
+          <div class="card-body">
+            <div>
+              <span class="badge">Самый выгодный<br>по наполнению</span>
+              <h2 class="tariff-name">Full</h2>
+              <div class="tariff-price">4 200 ₽</div>
+              <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
+              <div class="features-label">В данный тариф входит:</div>
+              <ul class="features-list">
+                <li>доставка песни на стриминговые сервисы;</li>
+                <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
+                <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
+                <li>оформление карточек артиста в сервисах Звук, Яндекс Музыка, VK Музыка;</li>
+                <li>синхронизированный текст на площадках;</li>
+                <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+              </ul>
+            </div>
           </div>
           <a href="#pay-full" class="pay-btn">Оплатить 4 200 ₽</a>
         </article>
 
         <article class="card" id="tariff-middle">
-          <div>
-            <h2 class="tariff-name">Middle</h2>
-            <div class="tariff-price">3 700 ₽</div>
-            <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
-            <div class="features-label">В данный тариф входит:</div>
-            <ul class="features-list">
-              <li>доставка песни на стриминговые сервисы;</li>
-              <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
-              <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
-              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
-            </ul>
+          <div class="card-body">
+            <div>
+              <h2 class="tariff-name">Middle</h2>
+              <div class="tariff-price">3 700 ₽</div>
+              <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
+              <div class="features-label">В данный тариф входит:</div>
+              <ul class="features-list">
+                <li>доставка песни на стриминговые сервисы;</li>
+                <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
+                <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
+                <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+              </ul>
+            </div>
           </div>
           <a href="#pay-middle" class="pay-btn">Оплатить 3 700 ₽</a>
         </article>
 
         <article class="card" id="tariff-basic">
-          <div>
-            <h2 class="tariff-name">Basic</h2>
-            <div class="tariff-price">2 700 ₽</div>
-            <div class="tariff-delivery">Срок доставки: от 2 рабочих дней</div>
-            <div class="features-label">В данный тариф входит:</div>
-            <ul class="features-list">
-              <li>доставка песни на стриминговые сервисы;</li>
-              <li>промо-ссылка на трек в день выхода, где будут собраны ссылки на все музыкальные сервисы;</li>
-              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
-            </ul>
+          <div class="card-body">
+            <div>
+              <h2 class="tariff-name">Basic</h2>
+              <div class="tariff-price">2 700 ₽</div>
+              <div class="tariff-delivery">Срок доставки: от 2 рабочих дней</div>
+              <div class="features-label">В данный тариф входит:</div>
+              <ul class="features-list">
+                <li>доставка песни на стриминговые сервисы;</li>
+                <li>промо-ссылка на трек в день выхода, где будут собраны ссылки на все музыкальные сервисы;</li>
+                <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+              </ul>
+            </div>
           </div>
           <a href="#pay-basic" class="pay-btn">Оплатить 2 700 ₽</a>
         </article>
@@ -640,7 +650,7 @@
       }, { passive: true });
 
       dots.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i, true)));
-      window.addEventListener('resize', updateDots);
+      window.addEventListener('resize', updateDivider = updateDots);
 
       if (isMobile()) scrollToCard(fullIndex, false);
       updateDots();

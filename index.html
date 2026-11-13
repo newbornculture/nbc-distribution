@@ -52,7 +52,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* фон вынесен в fixed-слой: background-attachment:fixed не работает на iOS */
     body::before {
       content: "";
       position: fixed;
@@ -178,6 +177,7 @@
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.42);
+      padding-top: 48px; 
     }
 
     .badge {
@@ -186,6 +186,7 @@
       left: 28px;
       white-space: nowrap;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      font-family: var(--font-display);
       font-size: 11px;
       font-weight: 400;
       text-transform: uppercase;
@@ -276,6 +277,11 @@
       color: #FFFFFF;
     }
 
+    .card.featured .pay-btn:hover {
+      background-color: var(--neon-purple);
+      color: #FFFFFF;
+    }
+
     .dropdown-section {
       background: rgba(104, 86, 118, 0.14);
       -webkit-backdrop-filter: blur(10px);
@@ -301,6 +307,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
 
     details.dropdown-section summary::-webkit-details-marker {
@@ -311,6 +318,7 @@
       content: "+";
       font-size: 20px;
       font-weight: 400;
+      flex-shrink: 0;
       transition: transform 0.2s ease;
     }
 
@@ -402,6 +410,10 @@
         flex: 0 0 var(--card-w);
         scroll-snap-align: center;
         flex-shrink: 0;
+      }
+
+      .card.featured {
+        padding-top: 32px; /
       }
 
       .badge {
@@ -567,6 +579,7 @@
             ИП Кузнецов Роман Михайлович<br>
             ОГРНИП: 326723200122391<br>
             ИНН: 720319239388<br>
+            E-mail: <a href="mailto:new.bornculture.demo@gmail.com" style="color: var(--lavender);">new.bornculture.demo@gmail.com</a><br>
             Тел.: <a href="tel:+79939111872" style="color: var(--lavender);">+7 (993) 911-18-72</a><br>
             <a href="oferta.html" style="color: var(--lavender); display: inline-block; margin-top: 8px; text-decoration: underline;">Публичная оферта</a>
           </div>
@@ -579,7 +592,7 @@
         ИП Кузнецов Роман Михайлович &nbsp;|&nbsp; ОГРНИП: 326723200122391 &nbsp;|&nbsp; ИНН: 720319239388 &nbsp;|&nbsp; <a href="oferta.html">Публичная оферта</a>
       </div>
       <div>
-        Тел.: <a href="tel:+79939111872">+7 (993) 911-18-72</a> &nbsp;|&nbsp; Telegram: <a href="https://t.me/newborn_culture" target="_blank" rel="noopener">@newborn_culture</a>
+        E-mail: <a href="mailto:new.bornculture.demo@gmail.com">new.bornculture.demo@gmail.com</a> &nbsp;|&nbsp; Тел.: <a href="tel:+79939111872">+7 (993) 911-18-72</a> &nbsp;|&nbsp; Telegram: <a href="https://t.me/newborn_culture" target="_blank" rel="noopener">@newborn_culture</a>
       </div>
     </footer>
   </div>

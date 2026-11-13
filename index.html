@@ -52,18 +52,19 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Жестко фиксированный фон на всю высоту без багов с заливкой */
+    /* Растягиваем фон на всю высоту с перекрытием под адресную строку */
     body::before {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
-      height: 100vh;
-      height: 100lvh;
+      height: 100%;
       transform: translateZ(0);
       z-index: -1;
-      background: url('assets/images/bg.webp') center / cover no-repeat var(--bg-dark);
+      background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
     }
 
     .container {
@@ -172,11 +173,16 @@
       position: relative;
     }
 
+    /* Поднимаем Full выше */
     .card.featured {
       background: var(--card-bg-featured);
       border: 1px solid rgba(210, 174, 227, 0.45);
-      /* Даем идеальный отступ для Full, чтобы выровнять название и цену с Middle и Basic */
-      padding-top: 52px; 
+      padding-top: 42px; 
+    }
+
+    /* Опускаем Middle и Basic для визуального равенства по высоте */
+    #tariff-middle, #tariff-basic {
+      padding-top: 42px;
     }
 
     .badge {
@@ -396,9 +402,8 @@
     }
 
     @media (max-width: 920px) {
-      /* Переключаем на мобильный фон везде без искажений */
       body::before {
-        background: url('assets/images/bg-mob.webp') center / cover no-repeat var(--bg-dark);
+        background: url('assets/images/bg-mob.webp') center top / cover no-repeat var(--bg-dark);
       }
 
       .pricing-grid {
@@ -424,11 +429,11 @@
         flex: 0 0 var(--card-w);
         scroll-snap-align: center;
         flex-shrink: 0;
-        padding: 32px 24px;
+        padding: 28px 24px;
       }
 
-      .card.featured {
-        padding-top: 52px;
+      .card.featured, #tariff-middle, #tariff-basic {
+        padding-top: 42px;
       }
 
       .badge {
@@ -519,7 +524,7 @@
                 <li>доставка песни на стриминговые сервисы;</li>
                 <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
                 <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
-                <li>оформление карточек артиста в сервисах Звук, Яндекс Музыка, VK Музыка;</li>
+                <li>оформление карточек артиста<br>в сервисах Звук, Яндекс Музыка, VK Музыка;</li>
                 <li>синхронизированный текст на площадках;</li>
                 <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
               </ul>

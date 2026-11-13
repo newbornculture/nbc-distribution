@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nbc distribution — Тарифы</title>
+  <meta name="description" content="Тарифы и оплата услуг дистрибуции музыки nbc distribution">
+  <meta name="theme-color" content="#270A35">
+  <link rel="preload" href="assets/fonts/heading-now-84-regular.otf" as="font" type="font/otf" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Heading Now';
+      src: url('assets/fonts/heading-now-84-regular.otf') format('opentype');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    :root {
+      --bg-dark: #270A35;
+      --card-bg: rgba(50, 18, 66, 0.4);
+      --card-bg-featured: rgba(61, 23, 82, 0.45);
+      --lavender: #D2AEE3;
+      --vivid-purple: #A967C7;
+      --neon-purple: #BF00FF;
+      --text-main: #F7F2FA;
+      --text-secondary: #C5B6D0;
+      --border-subtle: rgba(210, 174, 227, 0.2);
+      --font-display: 'Heading Now', sans-serif;
+      --font-display-sm: 'Heading Now', sans-serif;
+      --font-body: 'Heading Now', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { overflow-x: hidden; }
+
+    body {
+      isolation: isolate;
+      font-synthesis: none;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* фон вынесен в fixed-слой: background-attachment:fixed не работает на iOS */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100lvh;
+      transform: translateZ(0);
+      z-index: -1;
+      background: url('assets/images/bg.webp') center / cover no-repeat var(--bg-dark);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      flex: 1;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px 12px;
+      margin-bottom: 56px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-badge {
+      width: 52px;
+      height: 52px;
+      background-color: var(--lavender);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      flex-shrink: 0;
+    }
+
+    .logo-badge svg {
+      width: 100%;
+      height: 100%;
+      fill: #0A0A0A;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: lowercase;
+      color: var(--text-main);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tg-link, .offer-link {
+      font-size: 14px;
+      color: var(--lavender);
+      text-decoration: none;
+      padding: 9px 18px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      background: rgba(210, 174, 227, 0.08);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tg-link:hover, .offer-link:hover {
+      background: var(--lavender);
+      color: var(--bg-dark);
+      border-color: var(--lavender);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 32px;
+      color: var(--text-main);
+      overflow-wrap: anywhere;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      background: var(--card-bg);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 22px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .card.featured {
+      background: var(--card-bg-featured);
+      border: 1px solid rgba(210, 174, 227, 0.42);
+    }
+
+    .badge {
+      position: absolute;
+      top: -13px;
+      left: 28px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      font-size: 11px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--lavender);
+      color: var(--bg-dark);
+    }
+
+    .tariff-name {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .tariff-price {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--lavender);
+      margin-bottom: 12px;
+    }
+
+    .tariff-delivery {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .features-label {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .features-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .features-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--vivid-purple);
+    }
+
+    .pay-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      font-family: var(--font-display-sm);
+      font-size: 15px;
+      font-weight: 400;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background-color: var(--lavender);
+      color: var(--bg-dark);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .pay-btn:hover {
+      background-color: var(--neon-purple);
+      color: #FFFFFF;
+    }
+
+    .card.featured .pay-btn {
+      background-color: var(--vivid-purple);
+      color: #FFFFFF;
+    }
+
+    .dropdown-section {
+      background: rgba(104, 86, 118, 0.14);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .contact-details {
+      display: none;
+    }
+
+    details.dropdown-section summary {
+      font-family: var(--font-display-sm);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--lavender);
+      padding: 20px 24px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    details.dropdown-section summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.dropdown-section summary::after {
+      content: "+";
+      font-size: 20px;
+      font-weight: 400;
+      transition: transform 0.2s ease;
+    }
+
+    details.dropdown-section[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .dropdown-content {
+      padding: 0 24px 24px 24px;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .terms-grid strong {
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .legal-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px 24px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 24px;
+    }
+
+    .legal-footer a {
+      color: var(--lavender);
+      text-decoration: none;
+    }
+
+    .slider-dots {
+      display: none;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .dot {
+      cursor: pointer;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(210, 174, 227, 0.25);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dot.active {
+      background: var(--lavender);
+      transform: scale(1.25);
+    }
+
+    @media (max-width: 920px) {
+      body::before {
+        background-image: url('assets/images/bg-mob.webp');
+      }
+
+      .pricing-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-top: 16px;
+        padding-bottom: 8px;
+        --card-w: min(82vw, 340px);
+        margin-inline: -24px;
+        padding-inline: calc(50vw - var(--card-w) / 2);
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+      }
+
+      .pricing-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .card {
+        width: var(--card-w);
+        flex: 0 0 var(--card-w);
+        scroll-snap-align: center;
+        flex-shrink: 0;
+      }
+
+      .badge {
+        position: static;
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 16px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        text-align: center;
+      }
+
+      .slider-dots {
+        display: flex;
+      }
+
+      .brand-header { margin-bottom: 36px; }
+      .brand-lockup { gap: 12px; }
+      .logo-badge { width: 40px; height: 40px; padding: 6px; border-radius: 11px; }
+      .brand-name { font-size: 18px; white-space: nowrap; }
+      .header-actions { gap: 8px; }
+      .tg-link, .offer-link { font-size: 13px; padding: 8px 12px; }
+
+      .card, .dropdown-section {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+      }
+
+      .terms-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .legal-footer {
+        display: none;
+      }
+
+      .contact-details {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="brand-header">
+      <div class="brand-lockup">
+        <div class="logo-badge" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="14" y="72" width="11" height="56" rx="5.5"/>
+            <rect x="33" y="45" width="13" height="110" rx="6.5"/>
+            <rect x="54" y="27" width="15" height="146" rx="7.5"/>
+            <rect x="77" y="17" width="17" height="166" rx="8.5"/>
+            <rect x="102" y="12" width="17" height="176" rx="8.5"/>
+            <rect x="127" y="19" width="16" height="162" rx="8"/>
+            <rect x="151" y="31" width="14" height="138" rx="7"/>
+            <rect x="173" y="50" width="12" height="100" rx="6"/>
+            <rect x="191" y="75" width="9" height="50" rx="4.5"/>
+            <rect x="20" y="96" width="18" height="8" rx="4"/>
+            <rect x="42" y="114" width="18" height="8" rx="4"/>
+            <rect x="64" y="86" width="18" height="8" rx="4"/>
+            <rect x="88" y="118" width="18" height="8" rx="4"/>
+            <rect x="114" y="92" width="18" height="8" rx="4"/>
+            <rect x="138" y="74" width="18" height="8" rx="4"/>
+            <rect x="160" y="102" width="18" height="8" rx="4"/>
+            <rect x="180" y="110" width="16" height="8" rx="4"/>
+          </svg>
+        </div>
+        <div class="brand-name">nbc distribution</div>
+      </div>
+      <div class="header-actions">
+        <a class="offer-link" href="oferta.html">Оферта</a>
+        <a class="tg-link" href="https://t.me/newborn_culture" target="_blank" rel="noopener">@newborn_culture</a>
+      </div>
+    </header>
+
+    <main>
+      <h1 class="section-title">Тарифы, по которым мы работаем</h1>
+
+      <div class="pricing-grid" id="pricingGrid">
+        <article class="card featured" id="tariff-full">
+          <div>
+            <span class="badge">Самый выгодный по наполнению</span>
+            <h2 class="tariff-name">Full</h2>
+            <div class="tariff-price">4 200 ₽</div>
+            <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
+            <div class="features-label">В данный тариф входит:</div>
+            <ul class="features-list">
+              <li>доставка песни на стриминговые сервисы;</li>
+              <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
+              <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
+              <li>оформление карточек артиста в сервисах Звук, Яндекс Музыка, VK Музыка;</li>
+              <li>синхронизированный текст на площадках;</li>
+              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+            </ul>
+          </div>
+          <a href="#pay-full" class="pay-btn">Оплатить 4 200 ₽</a>
+        </article>
+
+        <article class="card" id="tariff-middle">
+          <div>
+            <h2 class="tariff-name">Middle</h2>
+            <div class="tariff-price">3 700 ₽</div>
+            <div class="tariff-delivery">Срок доставки: от 7 рабочих дней</div>
+            <div class="features-label">В данный тариф входит:</div>
+            <ul class="features-list">
+              <li>доставка песни на стриминговые сервисы;</li>
+              <li>промо-ссылка, где будут собраны ссылки на все сервисы;</li>
+              <li>питчинг трека в редакторские плейлисты сервисов VK Музыка, Яндекс Музыка, Звук, КИОН Музыка;</li>
+              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+            </ul>
+          </div>
+          <a href="#pay-middle" class="pay-btn">Оплатить 3 700 ₽</a>
+        </article>
+
+        <article class="card" id="tariff-basic">
+          <div>
+            <h2 class="tariff-name">Basic</h2>
+            <div class="tariff-price">2 700 ₽</div>
+            <div class="tariff-delivery">Срок доставки: от 2 рабочих дней</div>
+            <div class="features-label">В данный тариф входит:</div>
+            <ul class="features-list">
+              <li>доставка песни на стриминговые сервисы;</li>
+              <li>промо-ссылка на трек в день выхода, где будут собраны ссылки на все музыкальные сервисы;</li>
+              <li>оперативная техническая поддержка, по решению возникающих вопросов.</li>
+            </ul>
+          </div>
+          <a href="#pay-basic" class="pay-btn">Оплатить 2 700 ₽</a>
+        </article>
+      </div>
+
+      <div class="slider-dots" id="sliderDots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+
+      <details class="dropdown-section">
+        <summary>Порядок оплаты и оказания услуг</summary>
+        <div class="dropdown-content">
+          <div class="terms-grid">
+            <div>
+              <strong>Оплата и получение чека</strong>
+              Вы оплачиваете услугу онлайн через СБП и автоматически получаете чек сразу после оплаты. Предоплата — 100%.
+            </div>
+            <div>
+              <strong>Запуск релиза в работу</strong>
+              После проведения оплаты напишите в Telegram <a href="https://t.me/newborn_culture" target="_blank" rel="noopener" style="color: var(--lavender);">@newborn_culture</a> и отправьте материалы к релизу (аудио, обложку, метаданные).
+            </div>
+            <div>
+              <strong>Условия возврата</strong>
+              В случае отмены заказа до начала фактической отгрузки релиза на стриминговые площадки возврат средств осуществляется в полном объёме.
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="dropdown-section contact-details">
+        <summary>Реквизиты ИП и контактная информация</summary>
+        <div class="dropdown-content">
+          <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+            ИП Кузнецов Роман Михайлович<br>
+            ОГРНИП: 326723200122391<br>
+            ИНН: 720319239388<br>
+            Тел.: <a href="tel:+79939111872" style="color: var(--lavender);">+7 (993) 911-18-72</a><br>
+            <a href="oferta.html" style="color: var(--lavender); display: inline-block; margin-top: 8px; text-decoration: underline;">Публичная оферта</a>
+          </div>
+        </div>
+      </details>
+    </main>
+
+    <footer class="legal-footer">
+      <div>
+        ИП Кузнецов Роман Михайлович &nbsp;|&nbsp; ОГРНИП: 326723200122391 &nbsp;|&nbsp; ИНН: 720319239388 &nbsp;|&nbsp; <a href="oferta.html">Публичная оферта</a>
+      </div>
+      <div>
+        Тел.: <a href="tel:+79939111872">+7 (993) 911-18-72</a> &nbsp;|&nbsp; Telegram: <a href="https://t.me/newborn_culture" target="_blank" rel="noopener">@newborn_culture</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('pricingGrid');
+      if (!grid) return;
+      const cards = [...grid.querySelectorAll('.card')];
+      const dots = [...document.querySelectorAll('.dot')];
+      const fullIndex = Math.max(0, cards.indexOf(document.getElementById('tariff-full')));
+      const isMobile = () => window.matchMedia('(max-width: 920px)').matches;
+      const centerX = el => { const r = el.getBoundingClientRect(); return r.left + r.width / 2; };
+
+      const updateDots = () => {
+        const mid = centerX(grid);
+        let active = 0, best = Infinity;
+        cards.forEach((c, i) => {
+          const d = Math.abs(centerX(c) - mid);
+          if (d < best) { best = d; active = i; }
+        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === active));
+      };
+
+      const scrollToCard = (i, smooth) => {
+        const c = cards[i];
+        if (!c) return;
+        const left = c.getBoundingClientRect().left - grid.getBoundingClientRect().left + grid.scrollLeft;
+        grid.scrollTo({ left: left - (grid.clientWidth - c.offsetWidth) / 2, behavior: smooth ? 'smooth' : 'auto' });
+      };
+
+      let ticking = false;
+      grid.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { updateDots(); ticking = false; });
+      }, { passive: true });
+
+      dots.forEach((d, i) => d.addEventListener('click', () => scrollToCard(i, true)));
+      window.addEventListener('resize', updateDots);
+
+      if (isMobile()) scrollToCard(fullIndex, false);
+      updateDots();
+
+      // TODO: удалить, когда в href появятся реальные ссылки оплаты из кабинета Точки
+      document.querySelectorAll('a.pay-btn[href^="#pay-"]').forEach(a =>
+        a.addEventListener('click', e => e.preventDefault()));
+    });
+  </script>
+
+</body>
+</html>

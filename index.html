@@ -17,7 +17,6 @@
     }
 
     :root {
-      /* Точный цвет верхнего края картинки #151316 */
       --bg-dark: #151316;
       --card-bg: rgba(50, 18, 66, 0.55);
       --card-bg-featured: rgba(61, 23, 82, 0.65);
@@ -40,10 +39,11 @@
 
     html { overflow-x: hidden; }
 
+    /* Жестко фиксированный статичный фон на уровне body, который не двигается при скролле */
     body {
       isolation: isolate;
       font-synthesis: none;
-      background-color: var(--bg-dark);
+      background: url('assets/images/bg.webp') center top fixed / cover no-repeat var(--bg-dark);
       color: var(--text-main);
       font-family: var(--font-body);
       line-height: 1.55;
@@ -52,23 +52,6 @@
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-    }
-
-    /* Намертво зафиксированный фон с запасом по высоте против рывков адресной строки */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: -100px;
-      height: calc(100% + 100px);
-      z-index: -1;
-      background: url('assets/images/bg.webp') center top / cover no-repeat var(--bg-dark);
-      pointer-events: none;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      transform: translateZ(0);
     }
 
     .container {
@@ -404,8 +387,9 @@
     }
 
     @media (max-width: 920px) {
-      body::before {
-        background: url('assets/images/bg-mob.webp') center top / cover no-repeat var(--bg-dark);
+      /* Мобильный фон намертво фиксируется без сдвигов */
+      body {
+        background: url('assets/images/bg-mob.webp') center top fixed / cover no-repeat var(--bg-dark);
       }
 
       .pricing-grid {
